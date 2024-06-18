@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-    const baseUrl = "http://127.0.0.1:8000/api/tasks/";
+    const baseUrl = "https://ben-more-project-backend.onrender.com/api/v1";
 
     const projectListContainer = document.getElementById('project-list-container');
     const upcomingTaskListContainer = document.getElementById('upcoming-task-list-container');
@@ -221,7 +221,7 @@ $(document).ready(function() {
         let projectImageDiv = document.createElement('div');
         projectImageDiv.classList.add('flex', 'flex-row', 'gap-3', 'items-center', 'w-2/5', 'pl-12');
         let projectImage = document.createElement('img');
-        projectImage.src = 'static/images/profile-2.jpg';
+        projectImage.src = 'assets/images/profile-2.jpg';
         projectImage.classList.add('w-8', 'h-8', 'rounded-full');
         let projectNameDiv = document.createElement('div');
         projectNameDiv.classList.add('flex', 'flex-col');
@@ -284,10 +284,10 @@ $(document).ready(function() {
         let membersContainer = document.createElement('div');
         membersContainer.classList.add('flex', 'flex-row', 'ml-6');
         let memberImage1 = document.createElement('img');
-        memberImage1.src = 'static/images/profile-1.jpg';
+        memberImage1.src = 'assets/images/profile-1.jpg';
         memberImage1.classList.add('w-8', 'h-8', 'rounded-full');
         let memberImage2 = document.createElement('img');
-        memberImage2.src = 'static/images/profile-2.jpg';
+        memberImage2.src = 'assets/images/profile-2.jpg';
         memberImage2.classList.add('w-8', 'h-8', 'rounded-full', '-ml-2');
         let memberBadge = document.createElement('p');
         memberBadge.classList.add('w-8', 'h-8', 'rounded-full', '-ml-2', 'bg-faint-purple', 'text-center', 'flex', 'items-center', 'justify-center', 'font-light', 'text-sm');
@@ -378,11 +378,11 @@ $(document).ready(function() {
         secondRow.classList.add('flex', 'flex-row', 'mt-1');
 
         let memberImage1 = document.createElement('img');
-        memberImage1.src = 'static/images/profile-1.jpg';
+        memberImage1.src = 'assets/images/profile-1.jpg';
         memberImage1.classList.add('w-6', 'h-6', 'rounded-full');
 
         let memberImage2 = document.createElement('img');
-        memberImage2.src = 'static/images/profile-2.jpg';
+        memberImage2.src = 'assets/images/profile-2.jpg';
         memberImage2.classList.add('w-6', 'h-6', 'rounded-full');
 
         secondRow.appendChild(memberImage1);
@@ -601,3 +601,4 @@ const dueDateFormatter = (dateString) => {
 
     
 }
+

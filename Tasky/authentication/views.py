@@ -4,7 +4,7 @@ import json
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 import json
-from  django.core.validators import validate_email
+from .validator import validate_email, validate_password, validate_username
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
@@ -39,6 +39,14 @@ class UsernameValidationView(View):
         if User.objects.filter(username=username).exists():
             return JsonResponse({'username_error': 'sorry username in use,choose another one '}, status=409)
         return JsonResponse({'username_valid': True})
+
+
+class PasswordValidationView(View):
+    def post(self, request):
+        data = json.loads(request.body)
+        password = data['password']
+        if not validate_password(password):
+             return JsonResponse({'password_error': 'Password is less than 6'}, status=400)
 
 
 class RegistrationView(View):
