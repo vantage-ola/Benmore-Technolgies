@@ -1,0 +1,166 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/tailwind.css/tailwind.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <title>Tasky Dashboard</title>
+</head>
+
+<body class="h-screen bg-white text-black font-semibold">
+    <div class="flex w-screen h-screen">
+        <div id="sidebar" class="w-[300px] flex flex-col text-gray-500 gap-6 mt-16 px-10 py-4 duration-300">
+            <div class="mb-8">
+                <img src="{% static 'images/logo.png' %}" alt="Tasky Logo">
+            </div>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black bg-faint-purple px-4 py-3 rounded-md text-black">
+                <i class="material-symbols-outlined">dashboard</i> Dashboard
+            </a>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black">
+                <i class="material-symbols-outlined">task</i> Tasks
+            </a>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black">
+                <i class="material-symbols-outlined">calendar_month</i> Calendar
+            </a>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black">
+                <i class="material-symbols-outlined">group</i> Members
+            </a>
+
+            <div class="mt-8">
+                <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black">
+                    <i class="material-symbols-outlined">insights</i> Insights
+                </a>
+                <a href="" class="flex items-center gap-3 mt-6 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black">
+                    <i class="material-symbols-outlined">chat</i> Inbox
+                    <span class="ml-auto rounded-full px-3 py-1 text-xs text-white bg-circle-orange">18</span>
+                </a>
+            </div>
+
+            <div class="mt-auto flex items-center gap-3">
+                <img src="{% static 'images/user-normal.png' %}" class="w-16 h-16 rounded-full">
+                <a href="" class="text-xl">Profile</a>
+            </div>
+        </div>
+
+        <div class="grow pt-3 px-4" id="content">
+            <header class="w-full flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-auto rounded-md border bg-neutral-200 py-2 px-6 flex justify-center cursor-pointer">
+                        <span id="menuToggleBtn" class="material-symbols-outlined">menu</span>
+                    </div>
+                    <h1 class="text-2xl ml-4">Dashboard</h1>
+                </div>
+                <div class="relative w-1/3">
+                    <input type="text" class="w-full pl-10 pr-4 py-4 border rounded-full shadow-neutral-200 border-neutral-100 shadow-lg text-xs font-normal" placeholder="Search tasks">
+                    <div class="absolute inset-y-0 right-4 flex items-center pl-3">
+                        <span class="material-symbols-outlined text-gray-400">search</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="rounded-xl border bg-faint-black p-3 flex justify-center">
+                        <span class="material-symbols-outlined text-white">tune</span>
+                    </div>
+                    <div class="border border-neutral-100 bg-slate-100 flex justify-center items-center w-24 h-16 rounded-md cursor-pointer" onclick="create_task_modal.showModal()">
+                        <span class="material-symbols-outlined">add_circle</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="flex flex-wrap mt-8 gap-4">
+                <div class="w-full">
+                    <h2 class="text-lg font-semibold">My Tasks</h2>
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <div>
+                            <h3 class="text-md font-semibold">In Progress (2)</h3>
+                            <!-- Task card example -->
+                            <div class="bg-white p-4 rounded-md shadow-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs bg-red-200 text-red-800 px-2 py-1 rounded">High</span>
+                                    <span class="text-xs">6:00 PM</span>
+                                    <span class="text-xs bg-purple-200 text-purple-800 px-2 py-1 rounded">UX Design</span>
+                                </div>
+                                <h4 class="mt-2 font-semibold">User Flow</h4>
+                                <p class="text-sm text-gray-600">Designing a dashboard involves creating a visual interface...</p>
+                                <div class="flex items-center justify-between mt-2">
+                                    <div class="flex items-center">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full -ml-2">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full -ml-2">
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">visibility</i>
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">edit</i>
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">delete</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-md font-semibold">Completed Task (4)</h3>
+                            <!-- Task card example -->
+                            <div class="bg-white p-4 rounded-md shadow-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs bg-green-200 text-green-800 px-2 py-1 rounded">Low</span>
+                                    <span class="text-xs">6:00 PM</span>
+                                    <span class="text-xs bg-purple-200 text-purple-800 px-2 py-1 rounded">UX Design</span>
+                                </div>
+                                <h4 class="mt-2 font-semibold">Website Design</h4>
+                                <p class="text-sm text-gray-600">Designing a website involves creating a visual interface...</p>
+                                <div class="flex items-center justify-between mt-2">
+                                    <div class="flex items-center">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full -ml-2">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full -ml-2">
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">visibility</i>
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">edit</i>
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">delete</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-md font-semibold">Over-Due (5)</h3>
+                            <!-- Task card example -->
+                            <div class="bg-white p-4 rounded-md shadow-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs bg-red-200 text-red-800 px-2 py-1 rounded">High</span>
+                                    <span class="text-xs">22/06/23</span>
+                                    <span class="text-xs bg-purple-200 text-purple-800 px-2 py-1 rounded">UX Design</span>
+                                </div>
+                                <h4 class="mt-2 font-semibold">User Flow</h4>
+                                <p class="text-sm text-gray-600">Designing a dashboard involves creating a visual interface...</p>
+                                <div class="flex items-center justify-between mt-2">
+                                    <div class="flex items-center">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full -ml-2">
+                                        <img src="{% static 'images/user-avatar.png' %}" class="w-6 h-6 rounded-full -ml-2">
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">visibility</i>
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">edit</i>
+                                        <i class="material-symbols-outlined text-gray-500 cursor-pointer">delete</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

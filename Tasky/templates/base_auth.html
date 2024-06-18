@@ -1,0 +1,27 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management Dashboard   {% block title %}
+        {% endblock %}   </title>
+    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    <main role="main">
+
+
+
+        {% block content %}
+  
+        {% endblock %}
+  
+  
+      </main>
+    <div id="app">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
