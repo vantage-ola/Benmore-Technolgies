@@ -1,51 +1,50 @@
-
 {% extends 'base_auth.html' %}
 {% load static %}
 
 
 {% block content %}
 
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <div class="card mt-5">
-
-
-      <div class="card-body">
-        <div class="card-title py-3">
-          <h4>Login to your  account</h4>
+<div class="min-h-screen flex items-center justify-center w-full">
+    <div class="bg-white shadow-md rounded-lg px-8 py-6 max-w-md">
+        <div class="flex justify-center">
+            <img src="{% static 'images/benmore.svg' %}" width="50px" height="50px" />
         </div>
+        <h1 class="text-2xl font-bold text-center mb-4 text-blue-600">Login</h1>
         <form action="{% url 'login' %}" method="post">
-          {% csrf_token %}
-
-          <div class="form-group">
-            <input
-              type="text"
-              name="username"
-              placeholder="username"
-              id="usernameField"
-              value="{{fieldValues.username}}"
-              class="form-control form-control-sm"
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              class="form-control form-control-sm"
-              id="passwordField"
-            />
-          </div>
-          <input type="submit" value="Login" class="btn btn-block btn-primary submit-btn" />
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="text" class="block text-sm font-medium text-black mb-2">Username</label>
+                <input type="text" name="username" placeholder="Username" id="usernameField"
+                    value="{{fieldValues.username}}"
+                    class="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-blue-600 focus:border-blue-700"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-black mb-2">Password</label>
+                <input type="password" id="passwordField"
+                    class="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-blue-600 focus:border-blue-700"
+                    placeholder="Enter your password" required>
+                <a href="#"
+                    class="text-xs text-gray-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">Forgot
+                    Password?</a>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <input type="checkbox" id="remember"
+                        class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-700 focus:outline-none"
+                        checked>
+                    <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">Remember
+                        me</label>
+                </div>
+                <a href="#"
+                    class="text-xs text-blue-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">Create
+                    Account</a>
+            </div>
+            <button" value="Login" type="submit"
+                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Login</button>
         </form>
-
-      </div>
-
-      </div>
     </div>
-  </div>
-  <div class="col-md-4"></div>
 </div>
 
 <script src="{% static 'js/register.js' %}"></script>
